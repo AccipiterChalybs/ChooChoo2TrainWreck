@@ -2,6 +2,6 @@
 using System.Collections;
 
 public struct InputAction {
-	string buttonName;
-	int value;
+	public string buttonName;
+	public int value;
 }
