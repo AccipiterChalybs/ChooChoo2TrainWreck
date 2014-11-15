@@ -40,24 +40,63 @@ public class ControllablePlayer : MonoBehaviour {
 	/* Handles a new incoming action, by determining if/where to move
 	     * (using checkMove), then sends this action to the server, then
 	     * moves queuedAction up and sets it to null */
-	void HandleAction();
+	//keyboard commands
+	void HandleAction()
+	{
+		switch (mCurrentAction.buttonName)
+		{
+			case "Horizontal":
+				Vector3 horizMove = new Vector3(mCurrentAction.value, 0, 0);
+				if(this.CheckMove(horizMove))
+				{
+					transform.Translate(horizMove);
+				}
+			case "Vertical":
+				Vector3 vertMove = new Vector3(0, mCurrentAction.value, 0);
+				if(this.CheckMove(vertMove))
+				{
+					transform.Translate(vertMove);
+				}
+			default:
+				print("unimplemented control");
+		}
+
+		mCurrentAction = mQueuedAction;
+		mQueuedAction = null;
+	}
 
 	/* Moves the player's actual position, sets this.transform to it */
 	void MovePlayer();
 
 	/* Determine what Raycast we need to do to see if an obstacle is in the
 	     * way. */
-	bool CheckMove(Vector3 offset);
+	//offset = where player wants to go
+	//calls raycastCheck to make sure move is possible
+	bool CheckMove(Vector3 offset)
+	{
+		Vector3 start = transform.position;
+
+		return RaycastCheck (start, offset);
+	}
 
 	/* Start at a point, Raycast in Dir, return false if it hits an obstacle */
-	bool RaycastCheck(Vector3 start, Vector3 Dir);
+	bool RaycastCheck(Vector3 start, Vector3 dir, float distance)
+	{
+		return Physics.Raycast (start, dir, distance);
+	}
 
 	/* Change each timer by Time.deltaTime */
 	void FixedUpdateTimers();
 
 	/* Send a move that this player should perform
 	     * set mCurrentAction to it if empty, else overrides mQueuedAction */
-	void AddMove(InputAction newAction);
+	void AddMove(InputAction newAction)
+	{
+		if (mCurrentAction == null)
+			mCurrentAction = newAction;
+		else
+			mQueuedAction = newAction;
+	}
 
 	/* P only
 	     * Called by the server when this player gets hit */
