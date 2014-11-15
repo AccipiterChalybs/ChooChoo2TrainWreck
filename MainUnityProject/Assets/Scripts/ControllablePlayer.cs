@@ -21,7 +21,10 @@ public class ControllablePlayer : MonoBehaviour {
 	
 	/* Called when object is created, like ctor 
 	     * Leave this alone for now. */
-	void Start(){
+	void Start()
+	{
+		//set gravity for ALL RIGIDBODIES ON SCREEN
+		Physics.gravity = new Vector3 (0, -9.81f, 0);
 	}
 
 	/* Called every frame.
