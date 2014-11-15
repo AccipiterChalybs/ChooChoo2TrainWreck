@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		respawnLocation = new Vector3 (transform.position);
+		respawnLocation = (transform.position);
 	}
 	
 	// Update is called once per frame

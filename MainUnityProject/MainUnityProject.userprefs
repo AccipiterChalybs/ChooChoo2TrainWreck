@@ -1,25 +1,19 @@
 ﻿<Properties>
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\InputAction.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Pickup.cs" Line="8" Column="18" />
-      <File FileName="Assets\Scripts\NetworkManager.cs" Line="29" Column="36" />
-      <File FileName="Assets\Scripts\AccountManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InputManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControllablePlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InputAction.cs" Line="6" Column="12" />
-=======
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControllablePlayer.cs">
     <Files>
-      <File FileName="Assets\Scripts\ControllablePlayer.cs" Line="80" Column="3" />
-      <File FileName="Assets\Scripts\InputAction.cs" Line="8" Column="1" />
->>>>>>> 4f4f90ad785d9da72fabc5a43ab977c43d57688a
+      <File FileName="Assets\Scripts\ControllablePlayer.cs" Line="76" Column="48" />
+      <File FileName="Assets\Scripts\Pickup.cs" Line="8" Column="1" />
+      <File FileName="Assets\Scripts\NetworkManager.cs" Line="19" Column="2" />
+      <File FileName="Assets\Scripts\AccountManager.cs" Line="8" Column="20" />
+      <File FileName="Assets\Scripts\InputManager.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\InputAction.cs" Line="5" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\AccipiterChalybs\Documents\GitHub\ChooChoo2TrainWreck\MainUnityProject\Assets\Scripts\ControllablePlayer.cs" line="52" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
