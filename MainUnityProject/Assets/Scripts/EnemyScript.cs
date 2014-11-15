@@ -6,10 +6,11 @@ public class EnemyScript : MonoBehaviour {
 	public enum Direction{Left, Right, Forward, Backward, Up, Down};
 	public Direction moveDirection;
 	public float endValue;
-	public float delay;
+	public float delay; //respawn delay
 	public float speed;
 
 	private bool isMoving;
+	private Vector3 moveVector;
 	private bool respawning;
 	private float respawnTimer;
 	private Vector3 respawnLocation;
@@ -31,6 +32,7 @@ public class EnemyScript : MonoBehaviour {
 		switch(moveDirection)
 		{
 		case Direction.Left:
+			moveVector = new Vector3(-1,0,0);
 			if (transform.position.x > endValue)
 				isMoving = true;
 			else
@@ -40,6 +42,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 			break;
 		case Direction.Right:
+			moveVector = new Vector3(1,0,0);
 			if (transform.position.x < endValue)
 				isMoving = true;
 			else
@@ -49,6 +52,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 			break;
 		case Direction.Forward:
+			moveVector = new Vector3(0,0,1);
 			if (transform.position.z < endValue)
 				isMoving = true;
 			else
@@ -58,6 +62,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 			break;
 		case Direction.Backward:
+			moveVector = new Vector3(0,0,-1);
 			if (transform.position.z > endValue)
 				isMoving = true;
 			else
@@ -67,6 +72,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 			break;
 		case Direction.Up:
+			moveVector = new Vector3(0,1,0);
 			if (transform.position.y < endValue)
 				isMoving = true;
 			else
@@ -76,6 +82,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 			break;
 		case Direction.Down:
+			moveVector = new Vector3(0,-1,0);
 			if (transform.position.y > endValue)
 				isMoving = true;
 			else
@@ -91,7 +98,7 @@ public class EnemyScript : MonoBehaviour {
 		
 		if (isMoving && respawnTimer >= delay)
 		{
-			transform.Translate (Vector3.forward * Time.deltaTime * speed, Space.Self);
+			transform.Translate(moveVector * Time.deltaTime * speed, Space.Self);
 		}
 		else
 		{
