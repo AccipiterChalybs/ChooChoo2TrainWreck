@@ -25,10 +25,28 @@ public class ControllablePlayer : MonoBehaviour {
 	/* Called when object is created, like ctor 
 	     * Leave this alone for now. */
 	private Vector3 lastCheckpoint;
+	private bool dead = false;
 	
 	public void SetCheckpoint(Vector3 newCheckpoint)
 	{
 		lastCheckpoint = newCheckpoint;
+	}
+
+	public bool GetDead()
+	{
+		return dead;
+	}
+
+	public void Kill()
+	{
+		dead = true;
+	}
+
+	/* Moves Player back to respawn position */
+	public void Respawn( )
+	{
+		dead = false;
+		transform.position = lastCheckpoint;
 	}
 	
 	/* Called when object is created, like ctor 
@@ -61,15 +79,18 @@ public class ControllablePlayer : MonoBehaviour {
 	     *  Handle actions and other gameplay stuff here 
 	     *  (like decrementing timers), as this should coordinate
 	     *  better with the server, as it will be more deterministic. */
-	void FixedUpdate() {
-		if (isMoving && Vector3.Distance (transform.position, destination) < minDistance) {
-			Snap ();
-			CheckFall();
+	void FixedUpdate() {		
+		if (!dead)
+		{
+			if (isMoving && Vector3.Distance (transform.position, destination) < minDistance) {
+				Snap ();
+				CheckFall();
+			}
+			if (!isMoving) {
+				HandleAction ();
+			}
+			MovePlayer ();
 		}
-		if (!isMoving) {
-			HandleAction ();
-		}
-		MovePlayer ();
 	}
 
 	void Snap() {
@@ -179,9 +200,6 @@ public class ControllablePlayer : MonoBehaviour {
 	/* P only
 	     * Called by the server when this player gets hit */
 	void Incap(){}
-
-	/* Moves Player back to respawn position */
-	void Respawn( Vector3 Position ){}
 
 	/* For Later: Allows objects to apply effects on player */
 	void ApplyEffect(Effect e, int value){}
