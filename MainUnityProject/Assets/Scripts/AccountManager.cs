@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 public class AccountManager : MonoBehaviour {
 	/* This class should perform high level functions interacting with SQL database */
-
+	/*
 	// Length of VARCHAR in SQL DB
 	public const int USERNAME_LENGTH = 50;
 	public const int EMAIL_LENGTH = 50;
@@ -246,4 +246,5 @@ public class AccountManager : MonoBehaviour {
 		
 		return strBuilder.ToString();
 	}
+	*/
 }

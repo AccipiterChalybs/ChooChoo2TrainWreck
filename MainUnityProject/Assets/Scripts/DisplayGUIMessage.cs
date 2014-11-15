@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DisplayGUIMessage : MonoBehaviour 
 {
-	private ControllablePlayer player;
+	public ControllablePlayer player;
 
 	private string message;
 	private string buttonMessage = "RESPAWN";
@@ -20,8 +20,8 @@ public class DisplayGUIMessage : MonoBehaviour
 
 	void Awake()
 	{
-		buttonX = (Screen.width / 2) - buttonWidth;
-		buttonY = (Screen.width / 2) - buttonHeight;
+		buttonX = (Screen.width / 2) - (buttonWidth / 2);
+		buttonY = (Screen.height / 2) - (buttonHeight / 2);
 	}
 
 	//sets the message to be displayed

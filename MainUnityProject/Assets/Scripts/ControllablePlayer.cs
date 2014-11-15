@@ -46,7 +46,8 @@ public class ControllablePlayer : MonoBehaviour {
 	public void Respawn( )
 	{
 		dead = false;
-		transform.position = lastCheckpoint;
+		isMoving = false;
+		transform.position = lastCheckpoint + Vector3.up;
 	}
 	
 	/* Called when object is created, like ctor 
@@ -139,7 +140,7 @@ public class ControllablePlayer : MonoBehaviour {
 			if (vecMove != Vector3.zero && this.CheckMove (vecMove)) {
 			//		midpoint = transform.position + (vecMove) / 2.0f + Vector3.up * jumpHeight;
 					destination = transform.position + (vecMove);
-					if (Physics.Raycast(transform.position+0.9f*Vector3.up+vecMove, -1*Vector3.up, out hitInfo, 2f)) {
+					if (Physics.Raycast(transform.position+0.9f*Vector3.up+vecMove, -1*Vector3.up, out hitInfo, .5f)) {
 						destinationUp = hitInfo.normal;
 						destination.y += 0.5f;
 					} else {
@@ -179,7 +180,7 @@ public class ControllablePlayer : MonoBehaviour {
 	/* Start at a point, Raycast in Dir, return false if it hits an obstacle */
 	bool RaycastCheck(Vector3 start, Vector3 dir, float distance)
 	{
-		return Physics.Raycast (start, dir, distance);
+		return Physics.Raycast (start, dir, distance );
 	}
 
 	/* Change each timer by Time.deltaTime */
