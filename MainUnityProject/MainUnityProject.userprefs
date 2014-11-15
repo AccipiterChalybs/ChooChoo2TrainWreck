@@ -1,7 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControllablePlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AccountManager.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\ControllablePlayer.cs" Line="17" Column="34" />
       <File FileName="Assets\Scripts\Pickup.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\NetworkManager.cs" Line="1" Column="1" />
@@ -9,6 +10,14 @@
       <File FileName="Assets\Scripts\InputManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\InputAction.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EnemyScript.cs" Line="1" Column="1" />
+=======
+      <File FileName="Assets\Scripts\EnemyScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControllablePlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Checkpoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Pickup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SQLManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AccountManager.cs" Line="153" Column="2" />
+>>>>>>> 770962caa6e9ee5e517316ce2777ad6308023755
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
