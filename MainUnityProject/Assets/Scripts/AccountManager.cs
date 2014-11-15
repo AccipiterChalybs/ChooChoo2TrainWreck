@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
@@ -22,7 +23,7 @@ public class AccountManager : MonoBehaviour {
 
 		// Parametrized username as @usernameVal VarChar size 50
 		SqlParameter usernameParam = new SqlParameter("@usernameVal", SqlDbType.VarChar, 50);
-		usernameParam = username;
+		usernameParam.Value = username;
 
 		string commandString = "SELECT password FROM users WHERE username = '@usernameVal'";
 
@@ -37,17 +38,15 @@ public class AccountManager : MonoBehaviour {
 		if (reader.Read ()) {
 			if ( reader["password"].ToString().Equals(HashPass (password)) ) {
 				// Password is correct
+				myConnection.Close ();
 				return true;
-			}
-			else {
-				// Password is incorrect
-				return false;
 			}
 		}
 
-		
 		// Close the Connection
 		myConnection.Close ();
+
+		return false;
 	}
 	
 	bool NewAccount() {
@@ -58,16 +57,16 @@ public class AccountManager : MonoBehaviour {
 		
 		// Parametrized username as @usernameVal VarChar size 50
 		SqlParameter usernameParam = new SqlParameter("@usernameVal", SqlDbType.VarChar, 50);
-		usernameParam = username;
+		usernameParam.Value = username;
 
 		// Parametrized email as @emailVal VarChar size 50
 		SqlParameter emailParam = new SqlParameter("@emailVal", SqlDbType.VarChar, 50);
-		emailParam = email;
+		emailParam.Value = email;
 
 		// Parametrized password as @passwordVal VarChar size 100
 		SqlParameter passwordParam = new SqlParameter("@passwordVal", SqlDbType.VarChar, 100);
 		// Needs to hash
-		passwordParam = HashPass (password);
+		passwordParam.Value = HashPass (password);
 
 		string commandString = "INSERT INTO users (username, email, password) " + 
 								"VALUES ('@usernameVal','@passwordVal','@emailVal');";
@@ -78,23 +77,21 @@ public class AccountManager : MonoBehaviour {
 		registerCommand.Parameters.Add (emailParam);
 		registerCommand.Parameters.Add (passwordParam);
 
-
-		if (registerCommand.ExecuteNonQuery ()) {
+		// ExecuteNonQuery returns # of rows affected
+		if ( registerCommand.ExecuteNonQuery () != 0 ) {
 			//Registration Success
+			myConnection.Close ();
 			return true;
-		}
-		else {
-			// Registration Failure
-			return false;
 		}
 
 		// Close the Connection
 		myConnection.Close ();
+		return false;
 	}
 	
 	PlayerData getPlayerData( string user_name ) {
 
-		PlayerData data; // Return value
+		PlayerData data = new PlayerData(); // Return value
 
 		// Set up a SQLManager and get a connection
 		sqlMan = new SQLManager ();
@@ -102,7 +99,7 @@ public class AccountManager : MonoBehaviour {
 
 		// Parametrized username as @usernameVal VarChar size 50
 		SqlParameter usernameParam = new SqlParameter("@usernameVal", SqlDbType.VarChar, 50);
-		usernameParam = user_name;
+		usernameParam.Value = user_name;
 
 		string commandString = "SELECT * FROM userData WHERE username = '@usernameVal';";
 		
@@ -117,17 +114,18 @@ public class AccountManager : MonoBehaviour {
 		if (reader.Read ()) {
 
 			data.username = reader["username"].ToString();
-			data.score = reader["score"];
-			data.position_x = reader["position_x"];
-			data.position_y = reader["position_y"];
-			data.position_z = reader["position_z"];
+			data.score = Convert.ToInt32 (reader["score"].ToString ());
+			data.position_x = Convert.ToSingle (reader["position_x"].ToString());
+			data.position_y = Convert.ToSingle (reader["position_y"].ToString());
+			data.position_z = Convert.ToSingle (reader["position_z"].ToString());
 
 			// Success
 			return data;
 		}
 
 		// Fail
-		return 0;
+		// How to check if failed? Just check if username is "" (empty).
+		return data;
 	}
 
 	string HashPass(string password)

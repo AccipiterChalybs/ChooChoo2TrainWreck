@@ -6,10 +6,11 @@ public class Pickup : MonoBehaviour {
 	//Make sure to distinguish which player picks it up
 	void OnCollisionEnter( Collision obj)
 	{
+		/* TODO: This is causing some error?
 		if(obj.gameObject.GetComponent<ControllablePlayer> != null){
 				this.onPickup (obj.gameObject.GetComponent<ControllablePlayer> ());
 			//calling on pickup on this passing a referance to controllable player
-			}
+			}*/
 	}
 	void onPickup()
 	{
@@ -44,11 +45,18 @@ public class Pickup : MonoBehaviour {
 
 		//
 	}
+<<<<<<< HEAD
+//	void OnCollisionEnter( Collision obj);
+
+//	void onPickup();
+}
+=======
 
 //	void OnCollisionEnter( Collision obj);
 
 //	void onPickup();
 
+>>>>>>> faae28f821e84ec8f7f2b45ba57e90f06d651fd0
 //	void OnCollisionEnter( Collision obj);
 
 //	void onPickup();
