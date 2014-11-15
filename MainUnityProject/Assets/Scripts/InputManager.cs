@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour {
 		foreach (string button in buttonList) {
 			InputAction action = new InputAction();
 			action.buttonName = button;
-			action.value = Input.GetAxis(button);
+			action.value = (Input.GetButton(button)) ? 1 : 0;
 			if (action.value!=0) {
 				ApplyInput (currentPlayer, action);
 			}
