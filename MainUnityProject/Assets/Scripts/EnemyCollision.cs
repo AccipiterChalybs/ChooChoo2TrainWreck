@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyCollision : MonoBehaviour {
+public class EnemyCollision : MonoBehaviour 
+{
+	public DisplayGUIMessage message;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "Player")
+		{
+			ControllablePlayer player = collision.gameObject.GetComponent<ControllablePlayer>();
+			message.SetMessage("YOU ARE DEAD. WAY TO GO");
+			player.Kill ();
+		}
 	}
 }
