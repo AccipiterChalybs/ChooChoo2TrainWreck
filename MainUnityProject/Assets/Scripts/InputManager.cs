@@ -29,5 +29,5 @@ public class InputManager : MonoBehaviour {
 	}
 	
 	/* packages needed input to client_SendInput() */
-	void SendInput();
+	void SendInput(){}
 }
