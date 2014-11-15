@@ -2,14 +2,8 @@
 using System.Collections;
 
 public class Pickup : MonoBehaviour {
+	/* should just call onPickup, which will be overriden for each powerup */
+	void OnCollisionEnter( Collision obj);
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	void onPickup();
 }

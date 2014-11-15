@@ -2,14 +2,8 @@
 using System.Collections;
 
 public class AccountManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	/* This class should perform high level functions interacting with SQL database */
+	void CheckLogin();
+	void NewAccount();
+	void CheckData()
 }
