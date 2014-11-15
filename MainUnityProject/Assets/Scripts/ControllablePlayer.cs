@@ -6,13 +6,19 @@ public class ControllablePlayer : MonoBehaviour {
 	public enum Effect {Slow, NoMove, Stun};
 	public float baseSpeed; //hops / second
 	public InputAction mCurrentAction;
+
 	private InputAction mQueuedAction;
 	//private auto lastUpdateTime;
 	private Vector3 actualPosition; //non-visual position
 	private Vector3 destination;
 	private Vector3 midpoint;
-
-
+	private Vector3 lastCheckpoint;
+	
+	public void SetCheckpoint(Vector3 newCheckpoint)
+	{
+		lastCheckpoint = newCheckpoint;
+	}
+	
 	/* Called when object is created, like ctor 
 	     * Leave this alone for now. */
 	void Start(){
