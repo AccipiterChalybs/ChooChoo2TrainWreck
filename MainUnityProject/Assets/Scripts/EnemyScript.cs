@@ -7,6 +7,7 @@ public class EnemyScript : MonoBehaviour {
 	public Direction moveDirection;
 	public float endValue;
 	public float delay;
+	public float speed;
 
 	private bool isMoving;
 	private Vector3 respawnLocation;
@@ -14,7 +15,7 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		respawnLocation = new Vector3 (transform.position);
+		respawnLocation = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -70,7 +71,7 @@ public class EnemyScript : MonoBehaviour {
 		
 		if (isMoving)
 		{
-			transform.Translate (Vector3.forward * Time.deltaTime, Space.Self);
+			transform.Translate (Vector3.forward * Time.deltaTime * speed, Space.Self);
 		}
 		else
 		{
