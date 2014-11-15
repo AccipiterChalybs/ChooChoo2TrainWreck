@@ -17,8 +17,12 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+<<<<<<< HEAD
 		respawnLocation = transform.position;
 		respawnTimer = delay; //allow moving when game first starts
+=======
+		respawnLocation = (transform.position);
+>>>>>>> 264e10d1194a7fa2e37a65355e1a893ad8c35732
 	}
 
 	void FixedUpdate () 

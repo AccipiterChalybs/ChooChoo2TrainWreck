@@ -17,7 +17,9 @@ public class InputManager : MonoBehaviour {
 			InputAction action = new InputAction();
 			action.buttonName = button;
 			action.value = Input.GetAxis(button);
-			ApplyInput (currentPlayer, action);
+			if (action.value!=0) {
+				ApplyInput (currentPlayer, action);
+			}
 		}
 		//networkManager.send
 	}
