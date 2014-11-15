@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Pickup : MonoBehaviour {
 	/* should just call onPickup, which will be overriden for each powerup */
-<<<<<<< HEAD
 	//Make sure to distinguish which player picks it up
 	void OnCollisionEnter( Collision obj)
 	{
@@ -45,17 +44,16 @@ public class Pickup : MonoBehaviour {
 
 		//
 	}
-=======
+
 //	void OnCollisionEnter( Collision obj);
 
 //	void onPickup();
->>>>>>> FETCH_HEAD
+
+//	void OnCollisionEnter( Collision obj);
+
+//	void onPickup();
+
+//	void OnCollisionEnter( Collision obj);
+
+//	void onPickup();
 }
-//	void OnCollisionEnter( Collision obj);
-
-//	void onPickup();
-
-//	void OnCollisionEnter( Collision obj);
-
-//	void onPickup();
-
