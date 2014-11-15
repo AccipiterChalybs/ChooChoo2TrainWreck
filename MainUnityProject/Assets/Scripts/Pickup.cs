@@ -45,3 +45,11 @@ public class Pickup : MonoBehaviour {
 		//
 	}
 }
+//	void OnCollisionEnter( Collision obj);
+
+//	void onPickup();
+
+//	void OnCollisionEnter( Collision obj);
+
+//	void onPickup();
+
