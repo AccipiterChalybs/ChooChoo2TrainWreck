@@ -3,19 +3,20 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
 	bool isServer;
-	auto ipAddress;
-	auto port;
-	auto password;
+	//auto ipAddress;
+	///auto port;
+	//auto password;
 	
 	/* server starts hosting a game, or client attempts to connect */
-	void setupNetwork();
+	/*void setupNetwork();
 	
-	/* P only */
-	/* Wrapper method to change which RPC sending input causes */
-	/* Make sure to send a timestamp! */
-	void client_SendInput();
+	///* P only */
+	///* Wrapper method to change which RPC sending input causes */
+	///* Make sure to send a timestamp! */
+	//void client_SendInput();
 	
-	/* S only */
+	///* S only */
+	/*
 	void server_PlayerJoin();
 	
 	void server_SendFullRefresh();
@@ -26,5 +27,5 @@ public class NetworkManager : MonoBehaviour {
 	
 	void server_SendEnemyPosition();
 	
-	void server_SendEnvironmentState()
+	void server_SendEnvironmentState();*/
 }
