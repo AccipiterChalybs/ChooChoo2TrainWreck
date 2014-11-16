@@ -102,7 +102,7 @@ public class ControllablePlayer : MonoBehaviour {
 	}
 
 	void CheckFall() {
-		if (!RaycastCheck(transform.position + 0.25f * Vector3.up, -1 * Vector3.up, 1)) {
+		if (!RaycastCheck(transform.position + 0.5f * Vector3.up, -1 * Vector3.up, 1.4f)) {
 			destination = transform.position - 1*Vector3.up;
 			prevUp = Vector3.up;
 			
@@ -140,9 +140,9 @@ public class ControllablePlayer : MonoBehaviour {
 			if (vecMove != Vector3.zero && this.CheckMove (vecMove)) {
 			//		midpoint = transform.position + (vecMove) / 2.0f + Vector3.up * jumpHeight;
 					destination = transform.position + (vecMove);
-					if (Physics.Raycast(transform.position+0.9f*Vector3.up+vecMove, -1*Vector3.up, out hitInfo, .5f)) {
-						destinationUp = hitInfo.normal;
-						destination.y += 0.5f;
+					if (Physics.Raycast(transform.position+1.01f*Vector3.up+vecMove, -1*Vector3.up, out hitInfo, .8f)) {
+					destinationUp = Vector3.up;//hitInfo.normal;
+						destination.y += 1.01f - hitInfo.distance;
 					} else {
 						destinationUp = Vector3.up;
 					}
@@ -172,9 +172,9 @@ public class ControllablePlayer : MonoBehaviour {
 	//calls raycastCheck to make sure move is possible
 	bool CheckMove(Vector3 offset)
 	{
-		Vector3 start = transform.position+Vector3.up*0.75f;
+		Vector3 start = transform.position+Vector3.up*0.9f;
 
-		return !RaycastCheck (start, offset, 1);
+		return !RaycastCheck (start, offset, .8f);
 	}
 
 	/* Start at a point, Raycast in Dir, return false if it hits an obstacle */

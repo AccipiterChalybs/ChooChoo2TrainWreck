@@ -98,7 +98,7 @@ public class EnemyScript : MonoBehaviour {
 		
 		if (isMoving && respawnTimer >= delay)
 		{
-			transform.Translate(moveVector * Time.deltaTime * speed, Space.Self);
+			transform.Translate(moveVector * Time.deltaTime * speed, Space.World);
 		}
 		else
 		{
