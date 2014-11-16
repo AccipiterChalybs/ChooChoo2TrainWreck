@@ -27,6 +27,11 @@ public class ControllablePlayer : MonoBehaviour {
 	private Vector3 lastCheckpoint;
 	private bool dead = false;
 	
+	public void SetSpeed(float speedToIncrease)
+	{
+		baseSpeed += speedToIncrease;
+	}
+
 	public void SetCheckpoint(Vector3 newCheckpoint)
 	{
 		lastCheckpoint = newCheckpoint;

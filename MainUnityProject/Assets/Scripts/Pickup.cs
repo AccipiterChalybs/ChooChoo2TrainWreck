@@ -3,23 +3,64 @@ using System.Collections;
 
 public class Pickup : MonoBehaviour 
 {
-	public enum Effect(Speed)
+	public enum Effect{SPEED};
+	public Effect powerType;
+	public float speedIncrease = 10f;
+	public float powerupDuration = 10f; //the amount of time powerups last
+
+	private float powerupTimer = 0f; //the time left for the powerup's effect
+	private bool speedIsIncreased = false;
+
+	private ControllablePlayer player;
+
 	/* should just call onPickup, which will be overriden for each powerup */
 	//Make sure to distinguish which player picks it up
-	void OnCollisionEnter( Collision pickup)
+	void OnCollisionEnter( Collision collision)
 	{
-		// TODO: This is causing some error?
-		if(pickup.gameObject.GetComponent<ControllablePlayer>() != null)
+		if(collision.gameObject.GetComponent<ControllablePlayer>() != null)
 		{
-				this.onPickup (gameObject.GetComponent<ControllablePlayer>(),gameObject.GetComponent<);
-			//calling on pickup on this passing a referance to controllable player
+			//set the player for future reference
+			player = collision.gameObject.GetComponent<ControllablePlayer>();
+
+			//calling on pickup on this passing a referance to controllable player	
+			this.onPickup (player);
+			this.collider.enabled = false;
+			this.renderer.enabled = false;
 		}
 	}
-	void onPickup()
-	{
 
-		//needs to find the identity of the pickupable object/power up
-		//obj.gameObject.GetName<Pickup object>
+	void Update()
+	{
+		powerupTimer += Time.deltaTime;
+
+		//if out of powerupDuration, then turn off powerup and display the powerup oncsreen again
+		if (powerupTimer >= powerupDuration)
+		{
+			//take away the speed boost
+			if (speedIsIncreased)
+			{
+				speedIsIncreased = false;
+				player.SetSpeed(-speedIncrease);
+				this.collider.enabled = true;
+				this.renderer.enabled = true;
+			}
+		}
+
+	}
+
+	void onPickup(ControllablePlayer player)
+	{
+		switch (powerType)
+		{
+		case Effect.SPEED:
+			player.SetSpeed(speedIncrease);
+			powerupTimer = 0f;
+			speedIsIncreased = true;
+			break;
+		default:
+			print("that powerup is unavailable");
+			break;
+		}
 
 		//star
 			//immunity for 10 seconds
@@ -49,16 +90,4 @@ public class Pickup : MonoBehaviour
 
 		//
 	}
-
-//	void OnCollisionEnter( Collision obj);
-
-//	void onPickup();
-	
-//	void OnCollisionEnter( Collision obj);
-
-//	void onPickup();
-
-//	void OnCollisionEnter( Collision obj);
-
-//	void onPickup();
 }
