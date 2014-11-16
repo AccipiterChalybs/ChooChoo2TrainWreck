@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pickup : MonoBehaviour {
+public class Pickup : MonoBehaviour 
+{
+	public enum Effect(Speed)
 	/* should just call onPickup, which will be overriden for each powerup */
 	//Make sure to distinguish which player picks it up
-	void OnCollisionEnter( Collision obj)
+	void OnCollisionEnter( Collision pickup)
 	{
-		/* TODO: This is causing some error?
-		if(obj.gameObject.GetComponent<ControllablePlayer> != null){
-				this.onPickup (obj.gameObject.GetComponent<ControllablePlayer> ());
+		// TODO: This is causing some error?
+		if(pickup.gameObject.GetComponent<ControllablePlayer>() != null)
+		{
+				this.onPickup (gameObject.GetComponent<ControllablePlayer>(),gameObject.GetComponent<);
 			//calling on pickup on this passing a referance to controllable player
-			}*/
+		}
 	}
 	void onPickup()
 	{
+
 		//needs to find the identity of the pickupable object/power up
 		//obj.gameObject.GetName<Pickup object>
 
