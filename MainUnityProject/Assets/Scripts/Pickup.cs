@@ -45,7 +45,6 @@ public class Pickup : MonoBehaviour
 				this.renderer.enabled = true;
 			}
 		}
-
 	}
 
 	void onPickup(ControllablePlayer player)
@@ -82,12 +81,5 @@ public class Pickup : MonoBehaviour
 			
 			//are heart pieces randomly generated or not?
 				//if heart pieces have fixed locations do the types of heart pieces at different locations change?
-
-			
-
-		//Movements speed increase?, speed up the jump speed.
-			//this would increase the speed after ray is called
-
-		//
 	}
 }

@@ -75,17 +75,25 @@ public class ServerLogin : MonoBehaviour
 		password = GUI.TextField (new Rect (textFieldX, passwordY, textFieldWidth, textFieldHeight), 
 		                          password, MAX_LENGTH);
 
+		//login button pressed
 		if (GUI.Button(new Rect(buttonX, buttonY, buttonWidth, buttonHeight),
 		               buttonMessage))
 		{
+			//if the account does not exist on the server
 			if (!confirmAccount(login, password))
 			{
 				showNewAccount = true;
 				firstBoxEnabled = false;
 				secondBoxEnabled = true;
 			}
+			//if the account exists, load the first level
+			else
+			{
+				Application.LoadLevel(MAIN_LEVEL_INDEX);
+			}
 		}
 
+		//if neccessary, make a new account
 		if (showNewAccount)
 		{
 			Color bgColor = Color.black;
@@ -97,16 +105,18 @@ public class ServerLogin : MonoBehaviour
 			GUI.Box(new Rect(confirmBoxX, confirmBoxY, confirmBoxWidth, confirmBoxHeight),
 			        new GUIContent(confirmBoxMessage));
 
+			//take them to the account creation scene/webpage/whatever
+			//for now, placeholder is the main level
 			if (GUI.Button(new Rect(yesButtonX, confirmButtonsY, 
-			                        confirmButtonsWidth, confirmButtonsHeight),
-			               "YES"))
+			                        confirmButtonsWidth, confirmButtonsHeight), "YES"))
 			{
 				Application.LoadLevel(MAIN_LEVEL_INDEX);
 			}
 			
+			//they hit "no" to creating a new account
+			//go back to the login screen
 			if (GUI.Button(new Rect(denyButtonX, confirmButtonsY, 
-			                        confirmButtonsWidth, confirmButtonsHeight),
-			               "NO"))
+			                        confirmButtonsWidth, confirmButtonsHeight), "NO"))
 			{
 				secondBoxEnabled = false;
 				firstBoxEnabled = true;
